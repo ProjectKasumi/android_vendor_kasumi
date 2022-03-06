@@ -14,7 +14,7 @@
 
 $(call inherit-product, build/target/product/gsi_release.mk)
 $(call inherit-product, device/google/atv/products/atv_base.mk)
-$(call inherit-product, vendor/materium/config/common_full_tv.mk)
+$(call inherit-product, $(CUSTOM_VENDOR_DIR)/config/common_full_tv.mk)
 
 # Allow building otatools
 TARGET_FORCE_OTA_PACKAGE := true

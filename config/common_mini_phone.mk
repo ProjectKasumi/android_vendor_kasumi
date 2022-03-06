@@ -1,8 +1,8 @@
 # Inherit mini common Lineage stuff
-$(call inherit-product, vendor/materium/config/common_mini.mk)
+$(call inherit-product, $(CUSTOM_VENDOR_DIR)/config/common_mini.mk)
 
 # Required packages
 PRODUCT_PACKAGES += \
     LatinIME
 
-$(call inherit-product, vendor/materium/config/telephony.mk)
+$(call inherit-product, $(CUSTOM_VENDOR_DIR)/config/telephony.mk)

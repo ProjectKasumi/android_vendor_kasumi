@@ -44,11 +44,11 @@ except ImportError:
 DEBUG = True
 
 custom_local_manifest = ".repo/local_manifests/default.xml"
-custom_default_revision = "materium-v2"
+custom_default_revision = "staging/kasumi-v2"
 custom_github_revision = "lineage-19.0"
-custom_dependencies = "materium.dependencies"
+custom_dependencies = "kasumi.dependencies"
 org_manifest = "devices"  # leave empty if org is provided in manifest
-org_display = "Materium-Devices"  # needed for displaying
+org_display = "Kasumi-Devices"  # needed for displaying
 
 github_auth = None
 

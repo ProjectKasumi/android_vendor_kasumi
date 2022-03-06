@@ -1,5 +1,5 @@
 # Inherit common mobile Lineage stuff
-$(call inherit-product, vendor/materium/config/common.mk)
+$(call inherit-product, $(CUSTOM_VENDOR_DIR)/config/common.mk)
 
 # Default notification/alarm sounds
 PRODUCT_PRODUCT_PROPERTIES += \

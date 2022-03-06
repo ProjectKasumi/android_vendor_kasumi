@@ -14,7 +14,7 @@
 
 $(call inherit-product, device/generic/common/gsi_arm.mk)
 
-include vendor/materium/build/target/product/lineage_generic_target.mk
+include $(CUSTOM_VENDOR_DIR)/build/target/product/lineage_generic_target.mk
 
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
 

@@ -1,37 +1,36 @@
 function __print_lineage_functions_help() {
 cat <<EOF
 Additional LineageOS functions:
-- cout:            Changes directory to out.
-- mmp:             Builds all of the modules in the current directory and pushes them to the device.
-- mmap:            Builds all of the modules in the current directory and its dependencies, then pushes the package to the device.
-- mmmp:            Builds all of the modules in the supplied directories and pushes them to the device.
-- lineagegerrit:   A Git wrapper that fetches/pushes patch from/to LineageOS Gerrit Review.
-- lineagerebase:   Rebase a Gerrit change and push it again.
-- lineageremote:   Add git remote for LineageOS Gerrit Review.
-- aospremote:      Add git remote for matching AOSP repository.
-- cafremote:       Add git remote for matching CodeAurora repository.
-- githubremote:    Add git remote for LineageOS Github.
-- mka:             Builds using SCHED_BATCH on all processors.
-- mkap:            Builds the module(s) using mka and pushes them to the device.
-- cmka:            Cleans and builds using mka.
-- repodiff:        Diff 2 different branches or tags within the same repo
-- repolastsync:    Prints date and time of last repo sync.
-- reposync:        Parallel repo sync using ionice and SCHED_BATCH.
-- repopick:        Utility to fetch changes from Gerrit.
-- installboot:     Installs a boot.img to the connected device.
-- installrecovery: Installs a recovery.img to the connected device.
+- cout:             Changes directory to out.
+- mmp:              Builds all of the modules in the current directory and pushes them to the device.
+- mmap:             Builds all of the modules in the current directory and its dependencies, then pushes the package to the device.
+- mmmp:             Builds all of the modules in the supplied directories and pushes them to the device.
+- lineagegerrit:    A Git wrapper that fetches/pushes patch from/to LineageOS Gerrit Review.
+- lineagerebase:    Rebase a Gerrit change and push it again.
+- lineageremote:    Add git remote for LineageOS Gerrit Review.
+- aospremote:       Add git remote for matching AOSP repository.
+- cafremote:        Add git remote for matching CodeAurora repository.
+- githubremote:     Add git remote for LineageOS Github.
+- mka:              Builds using SCHED_BATCH on all processors.
+- mkap:             Builds the module(s) using mka and pushes them to the device.
+- cmka:             Cleans and builds using mka.
+- repodiff:         Diff 2 different branches or tags within the same repo
+- repolastsync:     Prints date and time of last repo sync.
+- repopick:         Utility to fetch changes from Gerrit.
+- installboot:      Installs a boot.img to the connected device.
+- installrecovery:  Installs a recovery.img to the connected device.
 
-Additional Materium functions:
-- materiumremote:  Add git remote for Materium GitHub.
-- ghfork:          Fork repo from Lineage, or if branch-repo combo doesn't exist, create one.
-- eatwrp:          eat, but for TWRP.
-- losfetch:        Fetch current repo from Lineage.
-- aospfetch:       Fetch current repo from AOSP.
-- losmerge:        Merge current repo with Lineage.
-- push:            Push new commits to Materium github.
-- pushall:         Push new commits from all repos to Materium github.
-- mergeall:        Merge all repos with Lineage.
-- pull:            Pull new commits from Materium github.
+Functions by カスミのツール (Kasumi's Tools):
+- play:             Build function.
+- reposync:         Reposync!! Laziness is taking over. Sync with special features and traditional repo. See "reposync help" for more info and usage.
+                    Defaults to "reposync auto".
+- reporesync:       This is repoREsync. It REsyncs. Self-explanatory?
+- reporeset:        Resets all repositories to their corresponding remote state as defined in the manifest.
+- reposterilize:    [DEPRECATED!] Completely cleans everything and deletes all untracked files.
+- resetmanifest:    Resets manifest in .repo/manifests to the one from remote.
+- createSnapshot:   Creates snapshot of last known good sources by creating snapshot of sources.
+- mergeUpstream:    Merges repos with "upstream=" tag in manifest.
+- mergeAospUpstream: Merges repos with "merge-aosp=true" tag in manifest from AOSP.
 EOF
 }
 
@@ -94,7 +93,7 @@ function breakfast()
                 variant="userdebug"
             fi
 
-            lunch materium_$target-$variant
+            lunch kasumi_$target-$variant
         fi
     fi
     return $?
@@ -105,7 +104,7 @@ alias bib=breakfast
 function eat()
 {
     if [ "$OUT" ] ; then
-        ZIPPATH=`ls -tr "$OUT"/Materium-*.zip | tail -1`
+        ZIPPATH=`ls -tr "$OUT"/Kasumi-*.zip | tail -1`
         if [ ! -f $ZIPPATH ] ; then
             echo "Nothing to eat"
             return 1
@@ -275,6 +274,12 @@ function lineageremote()
         LINEAGE="true"
         local PFX="LineageOS/"
     fi
+    if [ -z "$REMOTE" ]
+    then
+        REMOTE=$(git config --get remote.kasumi.projectname)
+        LINEAGE="true"
+        local PFX="LineageOS/"
+    fi
 
     if [ $LINEAGE = "false" ]
     then
@@ -292,44 +297,6 @@ function lineageremote()
         git remote add lineage ssh://$LINEAGE_USER@review.lineageos.org:29418/$PFX$PROJECT
     fi
     echo "Remote 'lineage' created"
-}
-
-function materiumremote()
-{
-    if ! git rev-parse --git-dir &> /dev/null
-    then
-        echo ".git directory not found. Please run this from the root directory of the Android repository you wish to set up."
-        return 1
-    fi
-    git remote rm materium 2> /dev/null
-    local REMOTE=$(git config --get remote.github.projectname)
-    local LINEAGE="true"
-    if [ -z "$REMOTE" ]
-    then
-        REMOTE=$(git config --get remote.aosp.projectname)
-        LINEAGE="false"
-    fi
-    if [ -z "$REMOTE" ]
-    then
-        REMOTE=$(git config --get remote.caf.projectname)
-        LINEAGE="false"
-    fi
-    if [ -z "$REMOTE" ]
-    then
-        REMOTE=$(git config --get remote.vdk.projectname)
-        LINEAGE="true"
-    fi
-
-    if [ $LINEAGE = "false" ]
-    then
-        local PROJECT=$(echo $REMOTE | sed -e "s#platform/#android/#g; s#/#_#g")
-    else
-	local PROJECT=$(echo $REMOTE | sed -e "s#LineageOS/##g")
-    fi
-    local PFX="ProjectMaterium/"
-
-    git remote add materium ssh://git@github.com/$PFX$PROJECT
-    echo "Remote 'materium' created"
 }
 
 function aospremote()
@@ -405,6 +372,12 @@ function githubremote()
         REMOTE=$(git config --get remote.materium.projectname)
         LINEAGE="true"
         local PFX="LineageOS/"
+    fi
+    if [ -z "$REMOTE" ]
+    then
+    	REMOTE=$(git config --get remote.kasumi.projectname | sed -e 's/build_make/build/' -e 's/PermissionController/PackageInstaller/')
+    	LINEAGE="true"
+    	local PFX="LineageOS/"
     fi
 
     if [ -z "$REMOTE" ]
@@ -826,10 +799,6 @@ function repolastsync() {
     echo "Last repo sync: $RLSLOCAL / $RLSUTC"
 }
 
-function reposync() {
-    repo sync -j 4 "$@"
-}
-
 function repodiff() {
     if [ -z "$*" ]; then
         echo "Usage: repodiff <ref-from> [[ref-to] [--numstat]]"
@@ -1010,7 +979,7 @@ alias cmkap='dopush cmka'
 
 function repopick() {
     T=$(gettop)
-    $T/vendor/materium/build/tools/repopick.py $@
+    $T/$CUSTOM_VENDOR_DIR/build/tools/repopick.py $@
 }
 
 function fixup_common_out_dir() {
@@ -1034,12 +1003,12 @@ function fixup_common_out_dir() {
 
 # active branch
 if [ -z "$MAT_BRANCH" ]; then
-    MAT_BRANCH=materium-v2
+    MAT_BRANCH=staging/kasumi-v2
 fi
 
 # device branch
 if [ -z "$DEV_BRANCH" ]; then
-    DEV_BRANCH=materium-v2
+    DEV_BRANCH=staging/kasumi-v2
 fi
 
 # vdk branch
@@ -1054,64 +1023,13 @@ fi
 
 # aosp tag
 if [ -z "$AOSP_TAG" ]; then
-    AOSP_TAG=$(python3 $ANDROID_BUILD_TOP/vendor/materium/tools/get-aosp-tag.py)
+    AOSP_TAG=$(python3 $ANDROID_BUILD_TOP/$CUSTOM_VENDOR_DIR/tools/get-aosp-tag.py)
 fi
-
-function ghfork()
-{
-    if ! git rev-parse --git-dir &> /dev/null
-    then
-        echo ".git directory not found. Please run this from the root directory of the Android repository you wish to set up."
-        return 1
-    fi
-    local REMOTE=$(git config --get remote.github.projectname)
-    local LINEAGE="true"
-    if [ -z "$REMOTE" ]
-    then
-        REMOTE=$(git config --get remote.aosp.projectname)
-        LINEAGE="false"
-    fi
-    if [ -z "$REMOTE" ]
-    then
-	echo "Failed to find repo name."
-	return 1
-    fi
-    git remote rm materium 2> /dev/null
-    local PFX="ProjectMaterium/"
-    if [ $LINEAGE = "false" ]
-    then
-        local PROJECT=$(echo $REMOTE | sed -e "s#platform/#android/#g; s#/#_#g")
-	local REPO=$PFX$PROJECT
-	gh repo create --public --disable-wiki --disable-issues ProjectMaterium/"$PROJECT"
-    else
-	local PROJECT=$(echo $REMOTE | sed -e "s#LineageOS/##g")
-	local REPO=$PFX$PROJECT
-	gh repo fork --org=ProjectMaterium --remote=false --clone=false LineageOS/"$PROJECT"
-    fi
-    git remote add materium ssh://git@github.com/"$REPO"
-    git push materium HEAD:refs/heads/"$MAT_BRANCH"
-    gh repo edit "$REPO" --default-branch="$MAT_BRANCH"
-    cd "$ANDROID_BUILD_TOP/android"
-    for branch in $(git ls-remote --heads ssh://git@github.com/"$REPO" | cut -f2); do 
-	if [ "$branch" != "refs/heads/$MAT_BRANCH" ]; then
-            echo Deleting "$branch"
-            git push --delete ssh://git@github.com/"$REPO" "$branch"
-	fi
-    done
-    cd -
-
-    echo -n "Repo '$REPO' created"
-    if [ $LINEAGE = "true" ]
-    then
-        echo -n " (forked from 'LineageOS/$PROJECT')"
-    fi
-    echo ", pushed HEAD as '$MAT_BRANCH', set it to default branch, created remote 'materium' and deleted all irrelevant branches from remote."
-}
 
 function eatwrp()
 {
     if [ "$OUT" ] ; then
-        ZIPPATH=`ls -tr "$OUT"/Materium-*.zip | tail -1`
+        ZIPPATH=`ls -tr "$OUT"/Kasumi-*.zip | tail -1`
         if [ ! -f $ZIPPATH ] ; then
             echo "Nothing to eat"
             return 1
@@ -1137,151 +1055,6 @@ function eatwrp()
         echo "Nothing to eat"
         return 1
     fi
-}
-
-function losfetch() {
-    local REMOTE=$(git config --get remote.materium.projectname)
-    if [ -z "$REMOTE" ]
-    then
-        REMOTE=$(git config --get remote.vdk.projectname)
-    fi
-    if [ -z "$REMOTE" ]
-    then
-	echo "Is this an Materium repo?"
-	return 1
-    fi
-    local REMOTE=$(git config --get remote.github.url)
-    if [ -z "$REMOTE" ]
-    then
-        githubremote
-    fi
-    local REMOTE=$(git config --get remote.github.url)
-    if ! git ls-remote --heads "$REMOTE" 2>/dev/null | cut -f2 | grep -q "$LOS_BRANCH"; then
-        echo "LOS has no branch for this repo, fetching from AOSP"
-	aospfetch
-	return 0
-    fi
-    git fetch github "$LOS_BRANCH"
-}
-
-function aospfetch() {
-    local REMOTE=$(git config --get remote.materium.projectname)
-    if [ -z "$REMOTE" ]
-    then
-        REMOTE=$(git config --get remote.vdk.projectname)
-    fi
-    if [ -z "$REMOTE" ]
-    then
-	echo "Is this an Materium repo?"
-	return 1
-    fi
-    local REMOTE=$(git config --get remote.aosp.url)
-    if [ -z "$REMOTE" ]
-    then
-        aospremote
-    fi
-    local REMOTE=$(git config --get remote.aosp.url)
-    local AOSP_TAG=$(python3 $ANDROID_BUILD_TOP/vendor/materium/tools/get-aosp-tag.py)
-    git fetch aosp "$AOSP_TAG"
-}
-
-function losmerge() {
-    losfetch || return 0
-    git merge FETCH_HEAD || zsh
-}
-
-function push() {
-    local REMOTE=$(git config --get remote.materium.projectname)
-    local RH=materium
-    local BRNCH=$MAT_BRANCH
-    if [ -z "$REMOTE" ]
-    then
-        REMOTE=$(git config --get remote.mat-infra.projectname)
-	RH=mat-infra
-	BRNCH=master
-    fi
-    if [ -z "$REMOTE" ]
-    then
-        REMOTE=$(git config --get remote.vdk.projectname)
-	RH=vdk
-	BRNCH=$VDK_BRANCH
-    fi
-    if [ -z "$REMOTE" ]
-    then
-        REMOTE=$(git config --get remote.mat-devices.projectname)
-	RH=mat-devices
-	BRNCH=$DEV_BRANCH
-    fi
-    if [ -z "$REMOTE" ]
-    then
-        REMOTE=$(git config --get remote.devices.projectname)
-	RH=devices
-	BRNCH=$DEV_BRANCH
-    fi
-    if [ -z "$REMOTE" ]
-    then
-	echo "Is this an Materium repo?"
-	return 1
-    fi
-    git push "$RH" HEAD:"$BRNCH" $@
-}
-
-function pull() {
-    local REMOTE=$(git config --get remote.materium.projectname)
-    local RH=materium
-    local BRNCH=$MAT_BRANCH
-    if [ -z "$REMOTE" ]
-    then
-        REMOTE=$(git config --get remote.mat-infra.projectname)
-	RH=mat-infra
-	BRNCH=master
-    fi
-    if [ -z "$REMOTE" ]
-    then
-        REMOTE=$(git config --get remote.vdk.projectname)
-	RH=vdk
-	BRNCH=$VDK_BRANCH
-    fi
-    if [ -z "$REMOTE" ]
-    then
-        REMOTE=$(git config --get remote.mat-devices.projectname)
-	RH=mat-devices
-	BRNCH=$DEV_BRANCH
-    fi
-    if [ -z "$REMOTE" ]
-    then
-        REMOTE=$(git config --get remote.devices.projectname)
-	RH=devices
-	BRNCH=$DEV_BRANCH
-    fi
-    if [ -z "$REMOTE" ]
-    then
-	echo "Is this an Materium repo?"
-	return 1
-    fi
-    git pull "$RH" "$BRNCH" $@
-}
-
-function mergeall() {
-    for i in $(repo forall -c pwd); do  # For every repo project..
-        if [[ "$i" != "$ANDROID_BUILD_TOP/materium"* ]] && # except materium/*...
-	[[ "$i" != "$ANDROID_BUILD_TOP/packages/apps/MtkFMRadio" ]] &&  # and MtkFMRadio...
-	[[ "$i" != "$ANDROID_BUILD_TOP/vendor/support" ]] &&  # and support...
-	[[ "$i" != "$ANDROID_BUILD_TOP/packages/apps/FaceUnlockService" ]] &&  # and FaceUnlockService...
-	[[ "$i" != "$ANDROID_BUILD_TOP/device/mediatek/sepolicy_vndr" ]] &&  # and sepolicy_vndr...
-	[[ "$i" != "$ANDROID_BUILD_TOP/packages/resources/MateriumTranslations" ]] &&  # and MateriumTranslations...
-	[[ "$i" != "$ANDROID_BUILD_TOP/external/zlib-ng" ]]; then  # and zlib-ng...
-	# which are no forks..
-	cd $i; pwd; losmerge; cd - 1>/dev/null # merge from Lineage.
-    fi; done
-}
-
-function pushall() {
-    for i in $(repo forall -c pwd); do  # For every repo project..
-	cd $i; pwd # cd
-	push $@ # push
-	cd - 1>/dev/null # cd back
-    done
 }
 
 # Disable ABI checking

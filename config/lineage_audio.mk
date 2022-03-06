@@ -2,9 +2,9 @@
 # Lineage Audio Files
 #
 
-ALARM_PATH := vendor/materium/prebuilt/common/media/audio/alarms
-NOTIFICATION_PATH := vendor/materium/prebuilt/common/media/audio/notifications
-RINGTONE_PATH := vendor/materium/prebuilt/common/media/audio/ringtones
+ALARM_PATH := $(CUSTOM_VENDOR_DIR)/prebuilt/common/media/audio/alarms
+NOTIFICATION_PATH := $(CUSTOM_VENDOR_DIR)/prebuilt/common/media/audio/notifications
+RINGTONE_PATH := $(CUSTOM_VENDOR_DIR)/prebuilt/common/media/audio/ringtones
 
 # Alarms
 PRODUCT_COPY_FILES += \

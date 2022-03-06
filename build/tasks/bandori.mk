@@ -16,12 +16,18 @@
 # -----------------------------------------------------------------
 # Lineage OTA update package
 
-LINEAGE_TARGET_PACKAGE := $(PRODUCT_OUT)/Materium-$(LINEAGE_VERSION).zip
+LINEAGE_TARGET_PACKAGE := $(PRODUCT_OUT)/Kasumi-$(LINEAGE_VERSION).zip
 
 SHA256 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/sha256sum
 
-.PHONY: bacon
-bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
+.PHONY: bandori
+bandori: $(INTERNAL_OTA_PACKAGE_TARGET)
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(LINEAGE_TARGET_PACKAGE)
 	$(hide) $(SHA256) $(LINEAGE_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(LINEAGE_TARGET_PACKAGE).sha256sum
+	@echo "// Project Kasumi //" >&2
+	@echo "// Same as always //" >&2
+	@echo "" >&2
 	@echo "Package Complete: $(LINEAGE_TARGET_PACKAGE)" >&2
+	@echo "" >&2
+	@echo "To get started, get your custom recovery up and slap this ROM in!" >&2
+	@echo "Based on Project Materium, brought to you by Yuki (@AITEx64) and Beru Shinsetsu (@WindowZ414)." >&2

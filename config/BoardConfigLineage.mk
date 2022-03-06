@@ -1,7 +1,7 @@
-include vendor/materium/config/BoardConfigKernel.mk
+include $(CUSTOM_VENDOR_DIR)/config/BoardConfigKernel.mk
 
 ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
-include vendor/materium/config/BoardConfigQcom.mk
+include $(CUSTOM_VENDOR_DIR)/config/BoardConfigQcom.mk
 endif
 
-include vendor/materium/config/BoardConfigSoong.mk
+include $(CUSTOM_VENDOR_DIR)/config/BoardConfigSoong.mk

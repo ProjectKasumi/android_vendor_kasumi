@@ -14,7 +14,7 @@
 
 $(call inherit-product, device/google/atv/products/aosp_tv_x86_64.mk)
 
-include vendor/materium/build/target/product/lineage_generic_tv_target.mk
+include $(CUSTOM_VENDOR_DIR)/build/target/product/lineage_generic_tv_target.mk
 
 PRODUCT_NAME := materium_tv_x86_64
 

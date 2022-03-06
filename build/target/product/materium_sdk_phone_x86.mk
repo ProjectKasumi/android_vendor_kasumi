@@ -14,7 +14,7 @@
 
 $(call inherit-product, build/target/product/sdk_phone_x86.mk)
 
-include vendor/materium/build/target/product/lineage_generic_target.mk
+include $(CUSTOM_VENDOR_DIR)/build/target/product/lineage_generic_target.mk
 
 # Enable mainline checking
 PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := relaxed
