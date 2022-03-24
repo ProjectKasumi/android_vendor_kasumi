@@ -12,16 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include vendor/materium/build/target/product/lineage_generic_tv_target.mk
+$(call inherit-product, device/generic/car/gsi_car_x86_64.mk)
 
-$(call inherit-product, device/google/atv/products/sdk_atv_x86.mk)
+include vendor/lineage/build/target/product/lineage_generic_car_target.mk
 
-TARGET_USES_64_BIT_BINDER := true
+PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
+
 TARGET_NO_KERNEL_OVERRIDE := true
 
 # Enable mainline checking
 PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := relaxed
 
-# Overrides
-PRODUCT_NAME := materium_sdk_tv_x86
-PRODUCT_MODEL := LineageOS Android TV SDK built for x86
+PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
+    system/app/Home/Home.apk
+
+PRODUCT_NAME := kasumi_gsi_car_x86_64

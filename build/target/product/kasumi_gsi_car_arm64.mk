@@ -1,4 +1,4 @@
-# Copyright (C) 2021 The LineageOS Project
+# Copyright (C) 2022 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,13 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, build/target/product/sdk_phone_x86.mk)
+$(call inherit-product, device/generic/car/gsi_car_arm64.mk)
 
-include $(CUSTOM_VENDOR_DIR)/build/target/product/lineage_generic_target.mk
+include vendor/lineage/build/target/product/lineage_generic_car_target.mk
+
+PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
+
+TARGET_NO_KERNEL_OVERRIDE := true
 
 # Enable mainline checking
 PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := relaxed
 
-# Overrides
-PRODUCT_NAME := materium_sdk_phone_x86
-PRODUCT_MODEL := LineageOS Android SDK built for x86
+PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
+    system/app/Home/Home.apk
+
+PRODUCT_NAME := kasumi_gsi_car_arm64

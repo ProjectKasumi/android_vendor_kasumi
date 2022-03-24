@@ -12,12 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, device/generic/common/gsi_x86.mk)
+include $(CUSTOM_VENDOR_DIR)/build/target/product/lineage_generic_car_target.mk
 
-include $(CUSTOM_VENDOR_DIR)/build/target/product/lineage_generic_target.mk
+$(call inherit-product, device/generic/car/emulator/aosp_car_emulator.mk)
 
-PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
+$(call inherit-product, $(SRC_TARGET_DIR)/product/sdk_x86_64.mk)
 
-TARGET_NO_KERNEL_OVERRIDE := true
-
-PRODUCT_NAME := materium_gsi_x86
+PRODUCT_NAME := kasumi_sdk_car_x86_64

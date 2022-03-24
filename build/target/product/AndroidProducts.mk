@@ -15,33 +15,37 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/materium_gsi_arm.mk \
-    $(LOCAL_DIR)/materium_gsi_arm64.mk \
-    $(LOCAL_DIR)/materium_gsi_x86.mk \
-    $(LOCAL_DIR)/materium_gsi_x86_64.mk \
-    $(LOCAL_DIR)/materium_tv_arm.mk \
-    $(LOCAL_DIR)/materium_tv_arm64.mk \
-    $(LOCAL_DIR)/materium_tv_x86.mk \
-    $(LOCAL_DIR)/materium_tv_x86_64.mk \
-    $(LOCAL_DIR)/materium_sdk_car_arm64.mk \
-    $(LOCAL_DIR)/materium_sdk_car_x86_64.mk \
-    $(LOCAL_DIR)/materium_sdk_phone_x86.mk \
-    $(LOCAL_DIR)/materium_sdk_phone_x86_64.mk \
-    $(LOCAL_DIR)/materium_sdk_tv_arm.mk \
-    $(LOCAL_DIR)/materium_sdk_tv_x86.mk
+    $(LOCAL_DIR)/kasumi_gsi_arm.mk \
+    $(LOCAL_DIR)/kasumi_gsi_arm64.mk \
+    $(LOCAL_DIR)/kasumi_gsi_x86.mk \
+    $(LOCAL_DIR)/kasumi_gsi_x86_64.mk \
+    $(LOCAL_DIR)/kasumi_gsi_car_arm64.mk \
+    $(LOCAL_DIR)/kasumi_gsi_car_x86_64.mk \
+    $(LOCAL_DIR)/kasumi_gsi_tv_arm.mk \
+    $(LOCAL_DIR)/kasumi_gsi_tv_arm64.mk \
+    $(LOCAL_DIR)/kasumi_gsi_tv_x86.mk \
+    $(LOCAL_DIR)/kasumi_gsi_tv_x86_64.mk \
+    $(LOCAL_DIR)/kasumi_sdk_car_arm64.mk \
+    $(LOCAL_DIR)/kasumi_sdk_car_x86_64.mk \
+    $(LOCAL_DIR)/kasumi_sdk_phone_x86.mk \
+    $(LOCAL_DIR)/kasumi_sdk_phone_x86_64.mk \
+    $(LOCAL_DIR)/kasumi_sdk_tv_arm.mk \
+    $(LOCAL_DIR)/kasumi_sdk_tv_x86.mk
 
 COMMON_LUNCH_CHOICES := \
-    materium_gsi_arm-userdebug \
-    materium_gsi_arm64-userdebug \
-    materium_gsi_x86-userdebug \
-    materium_gsi_x86_64-userdebug \
-    materium_tv_arm-userdebug \
-    materium_tv_arm64-userdebug \
-    materium_tv_x86-userdebug \
-    materium_tv_x86_64-userdebug \
-    materium_sdk_car_arm64-userdebug \
-    materium_sdk_car_x86_64-userdebug \
-    materium_sdk_phone_x86-userdebug \
-    materium_sdk_phone_x86_64-userdebug \
-    materium_sdk_tv_arm-userdebug \
-    materium_sdk_tv_x86-userdebug
+    kasumi_gsi_arm-userdebug \
+    kasumi_gsi_arm64-userdebug \
+    kasumi_gsi_x86-userdebug \
+    kasumi_gsi_x86_64-userdebug \
+    kasumi_gsi_car_arm64-userdebug \
+    kasumi_gsi_car_x86_64-userdebug \
+    kasumi_gsi_tv_arm-userdebug \
+    kasumi_gsi_tv_arm64-userdebug \
+    kasumi_gsi_tv_x86-userdebug \
+    kasumi_gsi_tv_x86_64-userdebug \
+    kasumi_sdk_car_arm64-userdebug \
+    kasumi_sdk_car_x86_64-userdebug \
+    kasumi_sdk_phone_x86-userdebug \
+    kasumi_sdk_phone_x86_64-userdebug \
+    kasumi_sdk_tv_arm-userdebug \
+    kasumi_sdk_tv_x86-userdebug
