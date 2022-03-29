@@ -290,7 +290,7 @@ ifeq ($(LINEAGE_BUILDTYPE), OFFICIAL)
     endif
     ifneq ($(filter OFFICIAL NIGHTLY,$(LINEAGE_BUILDTYPE)),)
         ifeq (,$(wildcard ./vendor/priv/releasekey.pk8))
-            $(error Build type is offical, yet vendor/priv does not exist)
+            $(error Build type is official, yet vendor/priv does not exist)
         endif
     endif
 else
