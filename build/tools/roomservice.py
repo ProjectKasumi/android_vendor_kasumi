@@ -45,7 +45,7 @@ DEBUG = True
 
 custom_local_manifest = ".repo/local_manifests/default.xml"
 custom_default_revision = "staging/kasumi-v2"
-custom_github_revision = "lineage-19.0"
+custom_github_revision = "lineage-19.1"
 custom_dependencies = "kasumi.dependencies"
 org_manifest = "devices"  # leave empty if org is provided in manifest
 org_display = "Kasumi-Devices"  # needed for displaying
