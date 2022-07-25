@@ -12,10 +12,6 @@ ADDITIONAL_SYSTEM_PROPERTIES += \
     ro.modversion=$(LINEAGE_VERSION) \
     ro.lineagelegal.url=https://lineageos.org/legal
 
-# LineageOS Platform Display Version
-ADDITIONAL_SYSTEM_PROPERTIES += \
-    ro.lineage.display.version=$(LINEAGE_DISPLAY_VERSION)
-
 # LineageOS Platform SDK Version
 ADDITIONAL_SYSTEM_PROPERTIES += \
     ro.lineage.build.version.plat.sdk=$(LINEAGE_PLATFORM_SDK_VERSION)
