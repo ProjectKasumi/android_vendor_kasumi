@@ -14,7 +14,8 @@
 
 $(call inherit-product, device/generic/common/gsi_x86.mk)
 
-include vendor/lineage/build/target/product/lineage_generic_target.mk
+CUSTOM_VENDOR_DIR ?= vendor/kasumi
+include $(CUSTOM_VENDOR_DIR)/build/target/product/lineage_generic_target.mk
 
 PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
 

@@ -1,5 +1,6 @@
 # Inherit mini common Lineage stuff
-$(call inherit-product, vendor/lineage/config/common_mini.mk)
+CUSTOM_VENDOR_DIR ?= vendor/kasumi
+$(call inherit-product, $(CUSTOM_VENDOR_DIR)/config/common_mini.mk)
 
 # Required packages
 PRODUCT_PACKAGES += \

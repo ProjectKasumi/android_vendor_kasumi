@@ -15,13 +15,14 @@
 # limitations under the License.
 #
 
+import os
 import sys
 from xml.dom.minidom import parseString
 
 def main(argv):
     reload(sys)
     sys.setdefaultencoding('utf8')
-    original_file = 'vendor/lineage/prebuilt/common/etc/apns-conf.xml'
+    original_file = (os.getenv('CUSTOM_VENDOR_DIR', 'vendor/halogenOS') + '/prebuilt/common/etc/apns-conf.xml')
 
     if len(argv) == 3:
         output_file_path = argv[1]

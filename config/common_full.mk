@@ -1,5 +1,6 @@
 # Inherit common Lineage stuff
-$(call inherit-product, vendor/lineage/config/common_mobile.mk)
+CUSTOM_VENDOR_DIR ?= vendor/kasumi
+$(call inherit-product, $(CUSTOM_VENDOR_DIR)/config/common_mobile.mk)
 
 PRODUCT_SIZE := full
 

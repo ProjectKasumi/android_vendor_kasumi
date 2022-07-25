@@ -15,7 +15,8 @@
 $(call inherit-product, build/target/product/gsi_release.mk)
 $(call inherit-product, device/google/atv/products/aosp_tv_arm.mk)
 
-include vendor/lineage/build/target/product/lineage_generic_tv_target.mk
+CUSTOM_VENDOR_DIR ?= vendor/kasumi
+include $(CUSTOM_VENDOR_DIR)/build/target/product/lineage_generic_tv_target.mk
 
 TARGET_NO_KERNEL_OVERRIDE := true
 TARGET_USES_64_BIT_BINDER := true

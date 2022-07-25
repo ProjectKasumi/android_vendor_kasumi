@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include vendor/lineage/build/target/product/lineage_generic_car_target.mk
+CUSTOM_VENDOR_DIR ?= vendor/kasumi
+include $(CUSTOM_VENDOR_DIR)/build/target/product/lineage_generic_car_target.mk
 
 $(call inherit-product, device/generic/car/emulator/aosp_car_emulator.mk)
 

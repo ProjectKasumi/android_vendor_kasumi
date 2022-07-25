@@ -2,9 +2,9 @@
 # Lineage Audio Files
 #
 
-ALARM_PATH := vendor/lineage/prebuilt/common/media/audio/alarms
-NOTIFICATION_PATH := vendor/lineage/prebuilt/common/media/audio/notifications
-RINGTONE_PATH := vendor/lineage/prebuilt/common/media/audio/ringtones
+ALARM_PATH := $(CUSTOM_VENDOR_DIR)/prebuilt/common/media/audio/alarms
+NOTIFICATION_PATH := $(CUSTOM_VENDOR_DIR)/prebuilt/common/media/audio/notifications
+RINGTONE_PATH := $(CUSTOM_VENDOR_DIR)/prebuilt/common/media/audio/ringtones
 
 # Alarms
 PRODUCT_COPY_FILES += \
@@ -13,6 +13,7 @@ PRODUCT_COPY_FILES += \
 
 # Notifications
 PRODUCT_COPY_FILES += \
+    $(NOTIFICATION_PATH)/Bushido!.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/notifications/Bushido!.ogg \
     $(NOTIFICATION_PATH)/CyanDoink.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/notifications/CyanDoink.ogg \
     $(NOTIFICATION_PATH)/CyanMail.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/notifications/CyanMail.ogg \
     $(NOTIFICATION_PATH)/CyanMessage.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/notifications/CyanMessage.ogg \
@@ -27,6 +28,7 @@ PRODUCT_COPY_FILES += \
     $(RINGTONE_PATH)/Boxbeat.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ringtones/Boxbeat.ogg \
     $(RINGTONE_PATH)/CyanTone.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ringtones/CyanTone.ogg \
     $(RINGTONE_PATH)/Highscore.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ringtones/Highscore.ogg \
+    $(RINGTONE_PATH)/JesusVibing.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ringtones/JesusVibing.ogg \
     $(RINGTONE_PATH)/Lyon.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ringtones/Lyon.ogg \
     $(RINGTONE_PATH)/Rockin.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ringtones/Rockin.ogg \
     $(RINGTONE_PATH)/Sheep.mp3:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ringtones/Sheep.mp3 \

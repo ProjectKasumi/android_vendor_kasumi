@@ -2,4 +2,5 @@
 PRODUCT_TYPE := go
 
 # Inherit full common Lineage stuff
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+CUSTOM_VENDOR_DIR ?= vendor/kasumi
+$(call inherit-product, $(CUSTOM_VENDOR_DIR)/config/common_full_phone.mk)

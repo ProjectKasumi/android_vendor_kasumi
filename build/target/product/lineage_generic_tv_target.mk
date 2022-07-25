@@ -12,8 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+CUSTOM_VENDOR_DIR ?= vendor/kasumi
 $(call inherit-product, device/google/atv/products/atv_base.mk)
-$(call inherit-product, vendor/lineage/config/common_full_tv.mk)
+$(call inherit-product, $(CUSTOM_VENDOR_DIR)/config/common_full_tv.mk)
 
 # Allow building otatools
 TARGET_FORCE_OTA_PACKAGE := true

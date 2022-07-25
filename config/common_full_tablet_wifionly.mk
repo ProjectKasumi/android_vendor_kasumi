@@ -1,5 +1,6 @@
 # Inherit full common Lineage stuff
-$(call inherit-product, vendor/lineage/config/common_full.mk)
+CUSTOM_VENDOR_DIR ?= vendor/kasumi
+$(call inherit-product, $(CUSTOM_VENDOR_DIR)/config/common_full.mk)
 
 # Required packages
 PRODUCT_PACKAGES += \
@@ -7,4 +8,4 @@ PRODUCT_PACKAGES += \
     LatinIME
 
 # Include Lineage LatinIME dictionaries
-PRODUCT_PACKAGE_OVERLAYS += vendor/lineage/overlay/dictionaries
+PRODUCT_PACKAGE_OVERLAYS += $(CUSTOM_VENDOR_DIR)/overlay/dictionaries

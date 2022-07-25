@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+CUSTOM_VENDOR_DIR ?= vendor/kasumi
+$(call inherit-product, $(CUSTOM_VENDOR_DIR)/config/common_full_phone.mk)
 
 # Allow building otatools
 TARGET_FORCE_OTA_PACKAGE := true

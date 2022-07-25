@@ -14,7 +14,8 @@
 
 $(call inherit-product, device/google/atv/products/aosp_tv_x86_64.mk)
 
-include vendor/lineage/build/target/product/lineage_generic_tv_target.mk
+CUSTOM_VENDOR_DIR ?= vendor/kasumi
+include $(CUSTOM_VENDOR_DIR)/build/target/product/lineage_generic_tv_target.mk
 
 TARGET_SUPPORTS_64_BIT_APPS := true
 

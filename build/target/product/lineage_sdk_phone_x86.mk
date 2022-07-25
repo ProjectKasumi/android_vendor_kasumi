@@ -14,7 +14,8 @@
 
 $(call inherit-product, build/target/product/sdk_phone_x86.mk)
 
-include vendor/lineage/build/target/product/lineage_generic_target.mk
+CUSTOM_VENDOR_DIR ?= vendor/kasumi
+include $(CUSTOM_VENDOR_DIR)/build/target/product/lineage_generic_target.mk
 
 # Enable mainline checking
 PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := relaxed
