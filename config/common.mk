@@ -107,7 +107,7 @@ PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
 # Bootanimation
-include $(CUSTOM_VENDOR_DIR)/config/bootanimation.mk
+# include $(CUSTOM_VENDOR_DIR)/config/bootanimation.mk
 
 # Lineage packages
 PRODUCT_PACKAGES += \
