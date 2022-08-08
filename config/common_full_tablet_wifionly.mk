@@ -9,3 +9,4 @@ PRODUCT_PACKAGES += \
 
 # Include Lineage LatinIME dictionaries
 PRODUCT_PACKAGE_OVERLAYS += $(CUSTOM_VENDOR_DIR)/overlay/dictionaries
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += $(CUSTOM_VENDOR_DIR)/overlay/dictionaries
