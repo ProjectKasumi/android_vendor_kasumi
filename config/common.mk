@@ -209,8 +209,8 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/crowdin/overlay
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     $(CUSTOM_VENDOR_DIR)/build/target/product/security/lineage
 
+include $(CUSTOM_VENDOR_DIR)/config/kasumi_flags.mk
 include $(CUSTOM_VENDOR_DIR)/config/version.mk
--include $(CUSTOM_VENDOR_DIR)/config/kasumi_flags.mk
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 -include $(CUSTOM_VENDOR_DIR)/config/partner_gms.mk
