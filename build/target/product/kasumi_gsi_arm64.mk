@@ -12,13 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, build/target/product/gsi_release.mk)
-$(call inherit-product, device/google/atv/products/aosp_tv_arm64.mk)
+$(call inherit-product, device/generic/common/gsi_arm64.mk)
 
-include vendor/lineage/build/target/product/lineage_generic_tv_target.mk
+include vendor/kasumi/build/target/product/kasumi_generic_target.mk
+
+PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
 
 TARGET_NO_KERNEL_OVERRIDE := true
 
-PRODUCT_NAME := lineage_gsi_tv_arm64
-
-PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS :=
+PRODUCT_NAME := kasumi_gsi_arm64

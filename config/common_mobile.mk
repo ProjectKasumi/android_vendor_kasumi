@@ -1,11 +1,11 @@
-# Inherit common mobile Lineage stuff
-$(call inherit-product, vendor/lineage/config/common.mk)
+# Inherit common mobile Kasumi stuff
+$(call inherit-product, vendor/kasumi/config/common.mk)
 
 # Include AOSP audio files
-include vendor/lineage/config/aosp_audio.mk
+include vendor/kasumi/config/aosp_audio.mk
 
 # Include Lineage audio files
-include vendor/lineage/config/lineage_audio.mk
+include vendor/kasumi/config/lineage_audio.mk
 
 # Default notification/alarm sounds
 PRODUCT_PRODUCT_PROPERTIES += \

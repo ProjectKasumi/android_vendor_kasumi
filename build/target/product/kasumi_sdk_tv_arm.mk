@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include vendor/lineage/build/target/product/lineage_generic_tv_target.mk
+include vendor/kasumi/build/target/product/kasumi_generic_tv_target.mk
 
-$(call inherit-product, device/google/atv/products/sdk_atv_x86.mk)
+$(call inherit-product, device/google/atv/products/sdk_atv_armv7.mk)
 
 TARGET_USES_64_BIT_BINDER := true
 TARGET_NO_KERNEL_OVERRIDE := true
@@ -23,8 +23,8 @@ TARGET_NO_KERNEL_OVERRIDE := true
 PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := relaxed
 
 # Overrides
-PRODUCT_NAME := lineage_sdk_tv_x86
-PRODUCT_MODEL := LineageOS Android TV SDK built for x86
+PRODUCT_NAME := kasumi_sdk_tv_arm
+PRODUCT_MODEL := Project Kasumi Android TV SDK built for ARM
 
 PRODUCT_SDK_ADDON_NAME := lineage
 PRODUCT_SDK_ADDON_SYS_IMG_SOURCE_PROP := $(LOCAL_PATH)/source.properties

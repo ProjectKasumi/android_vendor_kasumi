@@ -1,4 +1,4 @@
-# Copyright (C) 2018-2022 The LineageOS Project
+# Copyright (C) 2018-2020 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,12 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, device/generic/common/gsi_x86.mk)
+$(call inherit-product, device/google/atv/products/aosp_tv_x86_64.mk)
 
-include vendor/lineage/build/target/product/lineage_generic_target.mk
+include vendor/kasumi/build/target/product/kasumi_generic_tv_target.mk
 
-PRODUCT_USE_DYNAMIC_PARTITION_SIZE := true
+TARGET_SUPPORTS_64_BIT_APPS := true
 
-TARGET_NO_KERNEL_OVERRIDE := true
+PRODUCT_NAME := kasumi_gsi_tv_x86_64
 
-PRODUCT_NAME := lineage_gsi_x86
+PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS :=
+
+PRODUCT_SDK_ADDON_NAME := lineage
+PRODUCT_SDK_ADDON_SYS_IMG_SOURCE_PROP := $(LOCAL_PATH)/source.properties
