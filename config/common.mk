@@ -116,9 +116,9 @@ $(call enforce-product-packages-exist-internal,$(wildcard device/*/$(KASUMI_BUIL
 endif
 
 # Bootanimation
-TARGET_SCREEN_WIDTH ?= 1080
-TARGET_SCREEN_HEIGHT ?= 1920
-include vendor/kasumi/config/bootanimation.mk
+# TARGET_SCREEN_WIDTH ?= 1080
+# TARGET_SCREEN_HEIGHT ?= 1920
+# include vendor/kasumi/config/bootanimation.mk
 
 # Lineage packages
 PRODUCT_PACKAGES += \
