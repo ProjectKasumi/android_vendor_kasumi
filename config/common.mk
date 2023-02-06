@@ -17,6 +17,7 @@ ifeq ($(KASUMI_BUILD_TYPE),gapps)
     $(call inherit-product, vendor/gapps/$(TARGET_GAPPS_ARCH)/$(TARGET_GAPPS_ARCH)-vendor.mk)
 endif
 
+
 PRODUCT_BRAND ?= Kasumi
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
@@ -116,9 +117,10 @@ $(call enforce-product-packages-exist-internal,$(wildcard device/*/$(KASUMI_BUIL
 endif
 
 # Bootanimation
-# TARGET_SCREEN_WIDTH ?= 1080
-# TARGET_SCREEN_HEIGHT ?= 1920
-# include vendor/kasumi/config/bootanimation.mk
+TARGET_SCREEN_WIDTH ?= 1080
+TARGET_SCREEN_HEIGHT ?= 1920
+PRODUCT_PACKAGES += \
+    bootanimation.zip
 
 # Lineage packages
 PRODUCT_PACKAGES += \
