@@ -17,6 +17,10 @@ ifeq ($(KASUMI_BUILD_TYPE),gapps)
     $(call inherit-product, vendor/gapps/$(TARGET_GAPPS_ARCH)/$(TARGET_GAPPS_ARCH)-vendor.mk)
 endif
 
+# Inherit GCGOP config on demand
+ifeq ($(KASUMI_INCLUDE_GCGOP), true)
+    $(call inherit-product, $(GCGOP_VENDOR_DIR)/config.mk)
+endif
 
 PRODUCT_BRAND ?= Kasumi
 
