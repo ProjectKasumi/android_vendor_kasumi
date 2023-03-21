@@ -24,6 +24,12 @@ ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL OFFICIAL,$(KASUMI_BUILDTYPE
     KASUMI_EXTRAVERSION :=
 endif
 
+ifneq ($(filter OFFICIAL RELEASE,$(LINEAGE_BUILDTYPE)),)
+    ifeq (,$(wildcard ./vendor/priv/releasekey.pk8))
+        $(error Build type is offical, yet vendor/priv does not exist)
+    endif
+endif
+
 ifeq ($(KASUMI_BUILDTYPE), UNOFFICIAL)
     ifneq ($(TARGET_UNOFFICIAL_BUILD_ID),)
         KASUMI_EXTRAVERSION := -$(TARGET_UNOFFICIAL_BUILD_ID)
