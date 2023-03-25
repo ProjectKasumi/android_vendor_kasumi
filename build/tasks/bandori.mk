@@ -22,7 +22,7 @@ KASUMI_TARGET_PACKAGE := $(PRODUCT_OUT)/Kasumi-$(KASUMI_VERSION).zip
 SHA256 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/sha256sum
 
 .PHONY: bandori
-ifneq ($(filter OFFICIAL RELEASE,$(KASUMI_BUILDTYPE))
+ifneq ($(filter OFFICIAL RELEASE,$(KASUMI_BUILDTYPE)),)
 ifneq ($(TARGET_NO_ENFORCE_SIGNING),true)
 # This build is marked as official and requires signing. Some official devices might
 # not have a partition built so we're not enforcing signing for now.
