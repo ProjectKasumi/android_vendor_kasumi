@@ -213,6 +213,10 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.com.google.ime.kb_pad_land_l=64 \
     ro.com.google.ime.kb_pad_land_r=64
 
+# Translations
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/crowdin/overlay
+PRODUCT_PACKAGE_OVERLAYS += vendor/crowdin/overlay
+
 PRODUCT_VERSION_MAJOR := 1
 PRODUCT_VERSION_MINOR := 4
 PRODUCT_VERSION_MAINTENANCE := 0
