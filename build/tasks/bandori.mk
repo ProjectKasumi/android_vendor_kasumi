@@ -41,7 +41,7 @@ bandori: $(INTERNAL_OTA_PACKAGE_TARGET) otatools target-files-package
 	@echo "Package Complete: $(LINEAGE_TARGET_PACKAGE)" >&2
 	@echo "" >&2
 	@echo "To get started, get your custom recovery up and slap this ROM in!" >&2
-	@echo "Based on Project Materium, brought to you by Yuki (@AITEx64) and Beru Shinsetsu (@WindowZ414)." >&2
+	@echo "Based on Project Materium, brought to you by Yuki (@yukiqt) and Beru Kobayashi (@windowz414)." >&2
 else
 # Builds that can't be signed must have signature enforcement disabled using the flag above.
 bandori: $(INTERNAL_OTA_PACKAGE_TARGET)
@@ -54,7 +54,7 @@ bandori: $(INTERNAL_OTA_PACKAGE_TARGET)
 	@echo "Package Complete: $(LINEAGE_TARGET_PACKAGE)" >&2
 	@echo "" >&2
 	@echo "To get started, get your custom recovery up and slap this ROM in!" >&2
-	@echo "Based on Project Materium, brought to you by Yuki (@AITEx64) and Beru Shinsetsu (@WindowZ414)." >&2
+	@echo "Based on Project Materium, brought to you by Yuki (@yukiqt) and Beru Kobayashi (@windowz414)." >&2
 endif
 else
 # Builds that aren't marked as official aren't required to be signed.
@@ -68,5 +68,5 @@ bandori: $(INTERNAL_OTA_PACKAGE_TARGET)
 	@echo "Package Complete: $(LINEAGE_TARGET_PACKAGE)" >&2
 	@echo "" >&2
 	@echo "To get started, get your custom recovery up and slap this ROM in!" >&2
-	@echo "Based on Project Materium, brought to you by Yuki (@AITEx64) and Beru Shinsetsu (@WindowZ414)." >&2
+	@echo "Based on Project Materium, brought to you by Yuki (@yukiqt) and Beru Kobayashi (@windowz414)." >&2
 endif
